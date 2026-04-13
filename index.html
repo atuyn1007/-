@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZHU JIAHUI | 朱珈慧 - Personal Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Noto+Sans+SC:wght@300;400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f9f7f2; 
+            --text-main: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --accent: #2d4a85;
+            --border: #e0ddd7;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: "";
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            opacity: 0.3; pointer-events: none; z-index: 9999;
+        }
+
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 5%; }
+
+        .lang-switch {
+            position: fixed; top: 30px; right: 5%; z-index: 10000;
+            background: var(--text-main); color: var(--bg-color);
+            border: none; padding: 10px 20px; border-radius: 30px;
+            cursor: pointer; font-family: 'Inter'; font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .lang-switch:hover { transform: translateY(-2px); background: var(--accent); }
+
+        /* Header 样式：名字与头衔字体统一 */
+        header { padding: 120px 0 80px 0; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
+        .hero-text h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(2.5rem, 5vw, 4rem); 
+            line-height: 1.3; 
+            margin-bottom: 25px; 
+        }
+        .hero-text h1 i { font-weight: 400; font-style: italic; opacity: 0.8; }
+
+        .hero-desc { font-size: 1.15rem; color: var(--text-secondary); max-width: 600px; margin-bottom: 35px; }
+
+        .avatar-container { position: relative; display: flex; justify-content: flex-end; }
+        .avatar-container img { 
+            width: 100%; max-width: 400px; 
+            border: 1px solid var(--border); padding: 12px; 
+            background: white; box-shadow: 0 30px 60px rgba(0,0,0,0.08); 
+        }
+
+        section { padding: 80px 0; border-top: 1px solid var(--border); }
+        .section-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 50px; display: block; color: var(--accent); font-weight: 700; }
+
+        .exp-block { margin-bottom: 80px; display: grid; grid-template-columns: 320px 1fr; gap: 50px; }
+        .exp-info h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 12px; }
+        .exp-info .role { font-weight: 700; color: var(--text-main); margin-bottom: 8px; font-size: 1.1rem; }
+        .exp-info .time { font-family: 'Inter'; font-style: italic; color: #888; font-size: 0.95rem; }
+        
+        .exp-details { color: var(--text-secondary); }
+        .exp-details h5 { color: var(--text-main); margin: 20px 0 10px 0; font-size: 1.05rem; }
+        .exp-details p { margin-bottom: 15px; font-size: 1rem; line-height: 1.8; }
+        .exp-details ul { list-style: none; margin-top: 10px; }
+        .exp-details li { margin-bottom: 15px; position: relative; padding-left: 25px; font-size: 0.95rem; }
+        .exp-details li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; }
+        .grid-item h4 { font-family: 'Playfair Display', serif; font-size: 1.6rem; border-bottom: 2px solid var(--text-main); padding-bottom: 15px; margin-bottom: 25px; }
+
+        [lang="en"] { display: none; }
+        body.lang-en [lang="zh"] { display: none; }
+        body.lang-en [lang="en"] { display: block; }
+
+        @media (max-width: 1024px) {
+            header { grid-template-columns: 1fr; text-align: center; }
+            .avatar-container { justify-content: center; order: -1; }
+            .exp-block { grid-template-columns: 1fr; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="lang-switch" onclick="toggleLang()">EN / 中文</button>
+
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <div class="hero-text">
+                <h1 lang="zh">朱珈慧 · <i>硕士毕业生</i></h1>
+                <h1 lang="en">ZHU JIAHUI · <i>Master's Graduate</i></h1>
+                
+                <p class="hero-desc" lang="zh">中日韩三语背景，2026年三月于埼玉大学毕业。擅长利用 AI 工具结合深度一线调研，拆解核心用户心理，为全球化品牌输出具有本土竞争力的增长策略。</p>
+                <p class="hero-desc" lang="en">Trilingual Researcher (CN/JP/KR) graduating from Saitama University in March 2026. Expert in combining AI-driven analysis with deep user insights to deliver high-impact growth strategies for global brands.</p>
+                
+                <div style="display: flex; gap: 20px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">
+                    <span>Japanese N1</span> <span style="color:var(--border)">|</span> <span>Korean TOPIK 5</span> <span style="color:var(--border)">|</span> <span>AI & UX Research</span>
+                </div>
+            </div>
+            <div class="avatar-container">
+                <img src="avatar.jpg" alt="Zhu Jiahui 朱珈慧" onerror="this.src='https://via.placeholder.com/400x500?text=avatar.jpg'">
+            </div>
+        </header>
+
+        <!-- INTERNSHIP EXPERIENCE (Moved Up) -->
+        <section id="internship">
+            <span class="section-label" lang="zh">实习经历 / Internships</span>
+            <span class="section-label" lang="en">Professional Experience</span>
+
+            <!-- Tencent -->
+            <div class="exp-block">
+                <div class="exp-info">
+                    <h3 lang="zh">腾讯游戏</h3>
+                    <h3 lang="en">Tencent Games</h3>
+                    <p class="role" lang="zh">日韩市场二次元游戏用研助手</p>
+                    <p class="role" lang="en">User Research Assistant (JP/KR)</p>
+                    <div class="time">2025.11 - 2026.02</div>
+                </div>
+                <div class="exp-details">
+                    <ul lang="zh">
+                        <li>通过用户调研项目研究日韩玩家行为，拆解角色、剧情、抽卡等核心关注点；通过问卷与数据整理，提炼核心需求，为游戏内容优化及传播策略提供依据。</li>
+                        <li>项目期间深挖 Discord、YouTube 等社区讨论及 UGC 内容，总结传播路径与热点；根据版本内容针对性邀约 KOL 及核心玩家参与调研，重点产出基于粉丝偏好的传播策略。</li>
+                        <li>全程跟踪并支持东京、首尔线下测试，筛选资深玩家及 KOL 进行深度访谈 ，通过一线调研获取高质量用户洞察，提升调研有效性。</li>
+                    </ul>
+                    <ul lang="en">
+                        <li>Researched JP/KR player behavior, deconstructing core interests like characters and gacha mechanics. Extracted key needs via data analysis for content optimization.</li>
+                        <li>Monitored Discord/YouTube for UGC trends and viral paths. Recruited KOLs and core players for targeted research, producing fan-centric communication strategies.</li>
+                        <li>Supported offline testing in Tokyo and Seoul, conducting depth interviews with veteran players to secure high-quality first-hand insights.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- M2IE -->
+            <div class="exp-block">
+                <div class="exp-info">
+                    <h3 lang="zh">株式会社 M2IE</h3>
+                    <h3 lang="en">M2IE Co., Ltd.</h3>
+                    <p class="role" lang="zh">社群运营实习生</p>
+                    <p class="role" lang="en">Community Operations Intern</p>
+                    <div class="time">2024.10 - 2025.07</div>
+                </div>
+                <div class="exp-details">
+                    <ul lang="zh">
+                        <li>主导花西子、滴滴等品牌在日韩市场的冷启动，独立完成 1000+ 日本 KOL 筛选及对接。同时结合各类 AI 工具分析当下流行趋势，定制差异化内容方案。</li>
+                        <li>实时跟踪合作推文反馈，通过分析互动率与点击转化率优化合作形式，有效提升内容在日本社媒的传播势能与用户转化。</li>
+                    </ul>
+                    <ul lang="en">
+                        <li>Spearheaded market entry for Florasis and Didi in Japan/Korea. Managed 1,000+ Japanese KOLs. Used AI to analyze trends and create localized content.</li>
+                        <li>Analyzed real-time performance data to optimize collaboration formats, improving social media engagement and conversion in Japan.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PLAIN -->
+            <div class="exp-block">
+                <div class="exp-info">
+                    <h3 lang="zh">株式会社 PLAIN</h3>
+                    <h3 lang="en">PLAIN Co., Ltd.</h3>
+                    <p class="role" lang="zh">海外市场运营实习生</p>
+                    <p class="role" lang="en">Overseas Market Operations</p>
+                    <div class="time">2024.05 - 2024.08</div>
+                </div>
+                <div class="exp-details">
+                    <ul lang="zh">
+                        <li>输出 4 份日韩用户调研及优化方案，显著提升品牌在目标市场的接受度。</li>
+                        <li>利用 Python/Excel 监控内容表现并提出改进策略，确保海外投放效果最大化。</li>
+                    </ul>
+                    <ul lang="en">
+                        <li>Delivered 4 user research reports for JP/KR markets, improving brand acceptance.</li>
+                        <li>Used Python and Excel for performance monitoring and strategic optimization.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION (Expanded Content) -->
+        <section id="projects">
+            <span class="section-label" lang="zh">重点项目 / Key Projects</span>
+            <span class="section-label" lang="en">Key Projects</span>
+
+            <!-- Mirrorfy -->
+            <div class="exp-block">
+                <div class="exp-info">
+                    <h3 lang="zh">Mirrorfy</h3>
+                    <h3 lang="en">Mirrorfy (AI App)</h3>
+                    <p class="role" lang="zh">日本市场 0-1 营销负责人</p>
+                    <p class="role" lang="en">JP Market 0-1 Marketing Lead</p>
+                    <div class="time">2025 - 2026</div>
+                </div>
+                <div class="exp-details">
+                    <div lang="zh">
+                        <h5>项目简介</h5>
+                        <p>Mirrorfy 是一款基于 AI 的情感陪伴与记录类应用，用户可以通过语音或视频记录日常想法与情绪，并与具有不同性格设定的 AI 角色进行互动交流。同时产品还设计了类似“记忆抽取”的功能，帮助用户回顾过去的记录内容，从而形成持续的情绪记录与自我反思体验。</p>
+                        <h5>负责内容</h5>
+                        <ul>
+                            <li>完成 Mirrorfy 在日本市场从 0 到 1 的营销体系搭建，负责市场进入策略制定与执行。</li>
+                            <li>通过调研日本社交媒体生态及用户行为，分析情感陪伴类与虚拟互动产品的用户需求与偏好，明确目标用户画像与传播切入点。</li>
+                            <li>在 X、Instagram、TikTok 等平台筛选潜在人群，制定内容传播与用户触达策略，逐步建立产品初期曝光。</li>
+                            <li>参与本地化营销内容制作，负责剧本构思、脚本撰写与视频剪辑（包括短视频广告、剧情向内容及产品素材）。</li>
+                            <li>基于用户反馈与数据持续优化内容方向与投放策略，积累了完整的海外营销全链路经验。</li>
+                        </ul>
+                    </div>
+                    <div lang="en">
+                        <h5>Project Overview</h5>
+                        <p>Mirrorfy is an AI-driven emotional companionship and journaling app. It features interactive AI personas and a "Memory Retrieval" function for long-term emotional reflection.</p>
+                        <h5>Responsibilities</h5>
+                        <ul>
+                            <li>Built the 0-to-1 marketing system for Mirrorfy in Japan, leading market entry strategy and execution.</li>
+                            <li>Analyzed JP social media and user behavior to identify needs for virtual companionship and define target personas.</li>
+                            <li>Developed outreach strategies on X, Instagram, and TikTok to build initial brand exposure and user base.</li>
+                            <li>Produced localized assets including scriptwriting and video editing for narrative ads and marketing content.</li>
+                            <li>Iterated strategies based on feedback, gaining full-cycle global marketing experience.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bilibili -->
+            <div class="exp-block">
+                <div class="exp-info">
+                    <h3 lang="zh">Bilibili「小饼发财」</h3>
+                    <h3 lang="en">Bilibili Creator</h3>
+                    <p class="role" lang="zh">个人账号独立运营</p>
+                    <p class="role" lang="en">Content Growth (50k Followers)</p>
+                    <div class="time">2020 - 2022</div>
+                </div>
+                <div class="exp-details">
+                    <p lang="zh">独立完成从账号定位、内容策划到视频翻译剪辑的全流程，实现账号从 0 至 5 万粉丝增长，产出单条播放量超 200 万的爆款内容，具备极强的海外本土化内容生产力。</p>
+                    <p lang="en">Managed full-cycle content production, growing a personal account to 50k followers. Produced viral videos with 2M+ views, showcasing elite localized content creation skills.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION & SKILLS -->
+        <section>
+            <div class="grid-layout">
+                <div class="grid-item">
+                    <h4 lang="zh">教育背景</h4>
+                    <h4 lang="en">Education</h4>
+                    <p lang="zh"><b>埼玉大学 (2024-2026)</b><br>国际日本社会专攻 · 硕士</p>
+                    <p lang="en"><b>Saitama University (2024-2026)</b><br>MA in International Japanese Studies</p>
+                    <p lang="zh"><b>韩国外国语大学 (2019-2023)</b><br>日韩双学位 (日本语言文化 & 对外韩国语教育)</p>
+                    <p lang="en"><b>Hankuk Univ. of Foreign Studies</b><br>BA in Japanese & Korean Education</p>
+                </div>
+                <div class="grid-item">
+                    <h4 lang="zh">核心技能</h4>
+                    <h4 lang="en">Expertise</h4>
+                    <p lang="zh"><b>语言：</b>日语 N1、韩语 TOPIK 5、英语工作语言</p>
+                    <p lang="en"><b>Lang:</b> Japanese N1, Korean TOPIK 5, English Fluent</p>
+                    <p lang="zh"><b>技术：</b>熟练使用 AI (GPT/Claude) 构建原型及 Vibe Coding</p>
+                    <p lang="en"><b>Tech:</b> AI Prototyping & Vibe Coding Skills</p>
+                    <p lang="zh"><b>分析：</b>Python, SPSS, Excel 数据监控</p>
+                    <p lang="en"><b>Data:</b> Python, SPSS, Excel Analytics</p>
+                </div>
+            </div>
+        </section>
+
+        <footer style="padding: 100px 0; border-top: 1px solid var(--border); text-align: center;">
+            <p class="section-label">Contact</p>
+            <h2 style="font-family: 'Playfair Display'; font-size: 2.2rem; margin-bottom: 25px;">1467435261@qq.com</h2>
+            <p style="color: var(--text-secondary);">Phone: (+86) 18909569232 | Saitama & Tokyo</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleLang() {
+            document.body.classList.toggle('lang-en');
+            localStorage.setItem('preferredLang', document.body.classList.contains('lang-en') ? 'en' : 'zh');
+        }
+        window.onload = () => {
+            if (localStorage.getItem('preferredLang') === 'en') document.body.classList.add('lang-en');
+        }
+    </script>
+</body>
+</html>
