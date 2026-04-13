@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZHU JIAHUI | Personal Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Noto+Sans+SC:wght@300;400;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f9f7f2; /* 温暖纸感底色 */
+            --text-main: #1a1a1a;
+            --text-secondary: #555;
+            --accent: #2d4a85; /* 原简历的蓝色调 */
+            --border: #e0ddd7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', 'Noto+Sans+SC', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 纸张纹理叠加效果 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Hero Section */
+        header {
+            padding: 120px 0 80px 0;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            line-height: 1;
+            margin-bottom: 40px;
+        }
+
+        .hero-sub {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            max-width: 500px;
+            color: var(--text-secondary);
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            padding: 5px 15px;
+            border: 1px solid var(--text-main);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            display: block;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Experience List - Editorial Style */
+        .exp-item {
+            display: grid;
+            grid-template-columns: 250px 1fr auto;
+            gap: 40px;
+            margin-bottom: 60px;
+            transition: all 0.3s;
+        }
+
+        .exp-time {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        .exp-content h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .exp-content h4 {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .exp-content p {
+            color: var(--text-secondary);
+            max-width: 700px;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .skill-box h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--text-main);
+            padding-bottom: 10px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Footer / Contact */
+        footer {
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            padding: 100px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .contact-large {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            text-decoration: none;
+            color: var(--bg-color);
+            border-bottom: 2px solid var(--bg-color);
+        }
+
+        .social-links {
+            text-align: right;
+        }
+
+        @media (max-width: 768px) {
+            .hero-sub, .exp-item, .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links { display: none; }
+            .hero-title { font-size: 4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <div class="logo">ZHU JIAHUI.</div>
+            <ul class="nav-links">
+                <li>Experience</li>
+                <li>Research</li>
+                <li>Skills</li>
+                <li>Contact</li>
+            </ul>
+        </nav>
+
+        <header>
+            <h1 class="hero-title">Trilingual Marketer<br><i>& User Researcher.</i></h1>
+            <div class="hero-sub">
+                <div class="hero-desc">
+                    朱珈慧。埼玉大学硕士在读，深耕中日韩跨国市场。结合 AI 工具与深度用户洞察，构建具有传播势能的本土化内容生态。
+                </div>
+                <div class="hero-tags">
+                    <span class="tag">Japanese N1</span>
+                    <span class="tag">Korean TOPIK 5</span>
+                    <span class="tag">AI Vibe Coding</span>
+                    <span class="tag">Content Growth</span>
+                </div>
+            </div>
+        </header>
+
+        <section id="experience">
+            <span class="section-label">Selected Experience / 核心经历</span>
+            
+            <div class="exp-item">
+                <div class="exp-time">2025.11 — 2026.02</div>
+                <div class="exp-content">
+                    <h4>Tencent Games / 腾讯游戏</h4>
+                    <h3>日韩二次元游戏用户研究</h3>
+                    <p>通过 Discord 与 YouTube 社区洞察，拆解日韩玩家行为，支持东京、首尔线下测试，为核心版本传播策略提供高质量数据支撑。</p>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-time">2020 — 2022</div>
+                <div class="exp-content">
+                    <h4>Bilibili / 小饼发财</h4>
+                    <h3>个人账号独立运营 (0-50K Fans)</h3>
+                    <p>全流程负责内容定位与海外本土化翻译剪辑。产出单条播放量超 200 万爆款，深谙海外传播逻辑与用户心理。</p>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-time">2025 — 2026</div>
+                <div class="exp-content">
+                    <h4>AI Startup / Mirrorfy</h4>
+                    <h3>日本市场冷启动及运营</h3>
+                    <p>调研日本虚拟互动需求，负责 TikTok/X 广告脚本构思与剧情视频制作，通过 AI 工具快速迭代产品推广素材。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <span class="section-label">Expertise / 核心技能</span>
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <h4>Languages</h4>
+                    <ul class="skill-list">
+                        <li><b>Japanese</b> — N1 Professional</li>
+                        <li><b>Korean</b> — TOPIK 5 Upper</li>
+                        <li><b>Chinese</b> — Native</li>
+                    </ul>
+                </div>
+                <div class="skill-box">
+                    <h4>Technical</h4>
+                    <ul class="skill-list">
+                        <li>AI (GPT/Gemini/Claude)</li>
+                        <li>Vibe Coding / Prototyping</li>
+                        <li>Python / SPSS Data Analysis</li>
+                    </ul>
+                </div>
+                <div class="skill-box">
+                    <h4>Market</h4>
+                    <ul class="skill-list">
+                        <li>KOL Management (1000+)</li>
+                        <li>User Research (Offline/Online)</li>
+                        <li>Growth Hacking (Bilibili/TikTok)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <span class="section-label">Education / 教育背景</span>
+            <div class="exp-item">
+                <div class="exp-time">2024 — 2026</div>
+                <div class="exp-content">
+                    <h4>Saitama University, Japan</h4>
+                    <h3>国际日本社会专攻 (硕士)</h3>
+                </div>
+            </div>
+            <div class="exp-item">
+                <div class="exp-time">2019 — 2023</div>
+                <div class="exp-content">
+                    <h4>Hankuk University of Foreign Studies, Korea</h4>
+                    <h3>日本语言文化 & 对外韩国语教育 (双学士)</h3>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <span class="section-label" style="color: #888;">Get in touch</span>
+            <div class="footer-content">
+                <a href="mailto:1467435261@qq.com" class="contact-large">1467435261@qq.com</a>
+                <div class="social-links">
+                    <p>Phone: 18909569232</p>
+                    <p>Based in Saitama / Tokyo</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
